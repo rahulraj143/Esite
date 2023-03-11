@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{ category.description|truncatewords:155 }}
+    {% else %}
+        Welcome to RAAJ tech
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ category.name }} - Raaj tech
+    {% else %}
+        World of GaDgEtS- RAAj tech
+    {% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+    <div>
+        <div class="row class">
+            <div class="mx_auto">
+               <p style="color:white;"><a href="{% url 'ecomapp:allProdCat' %}">Our Product collections </a></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+<div class="mx_auto">
+    {% if category %}
+        <img class="my img" src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+    <br>
+<div>
+        <h1 class="text-center title" style="color:white;">{{category.name}}</h1>
+        <p class="text-justify" style="color:white;">{{category.description}}</p>
+</div>
+    {% else %}
+<div>
+<img class="my img imgpadding" src="{% static 'img/banner.png' %}" alt="our products" width="1325px;" height="400px;">
+</div>
+<br>
+<div>
+    <h1 class="text-center title"  style="color:white;">Our  Products Type</h1>
+    <p class="text-justify" style="color:white;">RAAj tech - raaj tech</p>
+</div>
+    {% endif %}
+<div class="container" >
+    <div class="row mx_auto">
+        {% for  product in product.object_list %}
+        <div class="mybtm marg col-9 col-sm-12 col-md-4 col-lg-4 " >
+            <div class="card text-center" style="min-width:17rem;background: linear-gradient(90deg, rgba(124,0,255,1) 0%,rgba(166,55,146,1) 22%, rgba(32,45,142,1) 49%, rgba(51,104,177,1) 81%,rgba(46,189,203,1) 100%);backdrop-filter:blur(10px);">
+                <a href="{{product.get_url}}"><img class="card-img-top my img" src="{{product.image.url}}" alt="{{product.name}}"></a>
+            <div class="card-body">
+               <h4 class="text-center" style="color:white;">{{product.name}}</h4>
+                <p class="text-justify" style="color:white;">Rs.{{product.price}}</p>
+            </div>
+
+            </div>
+            <br>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    <div class="mx-auto">
+        {% if product.paginator.num_pages > 1 %}
+        <hr>
+        <div class="text-center">
+            {% for pg in product.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn-sm {% if product.number == pg %} active {% endif %}">{{pg}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
+</div>
+{% endblock %}

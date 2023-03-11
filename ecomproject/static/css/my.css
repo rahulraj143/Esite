@@ -1,0 +1,104 @@
+.body{
+    font-family: 'Roboto', sans-serif;
+}
+.nav-item{
+    letter-spacing:.3em;
+    font-size:17px;
+    text-transform:uppercase;
+}
+.dropdown-item{
+    letter-spacing:.3em;
+    font-size:17px;
+    text-transform:uppercase;
+}
+.mfo p{
+    padding-top:20px;
+    font-size:15px;
+}
+.mfo{
+   background-color:#fy467;
+   height:18px;
+}
+.row class{
+   padding-top:20px;
+}
+.row class .mx_auto{
+   color:#000;
+   font-size:13px;
+}
+.my img{
+   width:100%;
+   height:50%;
+}
+.title{
+   font-size:17px;
+   text_transform:uppercase;
+   letter-spacing:.2em;
+}
+.imgpadding{
+   padding:none;
+}
+.mybtm marg{
+  margin-bottom:12px;
+}
+.card-body h4{
+  font-size:14px;
+  text_transform:uppercase;
+  letter-spacing:.2em;
+}
+.row product{
+  padding-top:13px;
+  padding-bottom:19px;
+
+}
+.row product .mx_auto{
+  color:#000;
+  font-size:13px;
+  text-decoration:none;
+
+}
+.myprod title{
+  font-size:17px;
+  text_transform:uppercase;
+  letter-spacing:.2em;
+  padding-top:16px;
+  padding-bottom:12px;
+
+}
+.mypro text{
+  padding-right:20px;
+}
+.mys{
+  padding-top:20px;
+}
+.cus{
+  min-width:400px;
+  font-size:15px;
+}
+.cus thead{
+  font-weight:normal;
+  text_transform:uppercase;
+  letter-spacing:.2em;
+  background-color:e7e8o6!important;
+}
+.custom_a{
+  text-decoration:none;
+}
+.custom_icon{
+  text-decoration:none;
+  color:#00045f!important;
+}
+.cust bot{
+  margin-top:6px;
+}
+back{
+  background: linear-gradient(90deg, rgba(124,0,255,1) 0%,
+  rgba(166,55,146,1) 22%, rgba(32,45,142,1) 49%, rgba(51,104,177,1) 81%,
+  rgba(46,189,203,1) 100%);
+}
+text-center  h1 h4 text-justify p block title block metadescription{
+  color:white!important;
+}
+style{
+   color:white;
+}

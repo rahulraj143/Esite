@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+        Raaj tech-Cart
+{% endblock %}
+{% block title %}
+        Raaj-CART
+{% endblock %}
+{% block content %}
+{% if not cartitems %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my title" style="color:white;">
+            Your Shoppong Cart
+        </h1>
+        <br>
+        <p class="text-center" style="color:white;">
+            Click Here <a href="{% url 'ecomapp:allProdCat' %}">to continue shopping</a>
+        </p>
+    </div>
+</div>
+{% else %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center title" style="color:white;">
+            Shops Cart
+        </h1>
+        <br>
+    </div>
+<div class="row mx-auto">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <table class="tbl cus">
+            <thead class="cus thead">
+            <tr>
+                <th colspan="5" style="color:white;">
+                    Items
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cartitem in cartitems %}
+            <tr>
+                <td>
+                    <a href="cartitem.product.get_absolute_url"><img src="{{cartitem.product.image.url}}" style="height:300px;" alt="" class="float-left rounded cus img"></a>
+                </td>
+                <td class="text-left" style="color:white;">
+                    {{cartitem.product.name}}
+                    <br>
+                    Sn:{{cartitem.product.id}}
+                    <br>
+                    Price:{{cartitem.product.price}}
+                    <br>
+                    Qty:{{cartitem.quantity}} x Rs{{cartitem.product.price}}
+                </td>
+                <td>
+                    {{cartitem.total}}
+                </td>
+                {% if cartitem.quantity < cartitem.product.stock %}
+                <td>
+                    <a href="{% url 'cart:addcart' cartitem.product.id %}" class="custom_a"><i class="fa fa-plus custom_icon"></i></a>
+                    &nbsp;<a href="{% url 'cart:cartdel' cartitem.product.id %}" class="custom_a"><i class="fa fa-minus custom_icon"></i></a>
+                    &nbsp;<a href="{% url 'cart:trash' cartitem.product.id %}" class="custom_icon"><i class="fa fa-trash custom_icon"></i></a>
+                </td>
+                {% else %}
+                <td>
+                    &nbsp;<a href="{% url 'cart:cartdel' cartitem.product.id %}" class="custom_a"><i class="fa fa-minus custom_icon"></i></a>
+                    &nbsp;<a href="{% url 'cart:trash' cartitem.product.id %}" class="custom_icon"><i class="fa fa-trash custom_icon"></i></a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <table class="table cust tab">
+            <thead class="cust thead">
+            <tr>
+                <th style="color:white;">
+                    Checkout
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="color:white;">
+                    Please check Your Shop cart
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left" style="color:white;">
+                    Your Total:Rs.<strong>{{total}}</strong>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="mx-auto">
+            <a href="" class="btn btn-secondary btn-block cust bot" style="color:white;">Make Payments</a>
+
+            <a href="{% url 'ecomapp:allProdCat' %}" class="btn btn-secondary btn-block cust bot" style="color:white;">Continue Shopping</a>
+
+        </div>
+      {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

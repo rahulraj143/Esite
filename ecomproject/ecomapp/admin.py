@@ -1,0 +1,13 @@
+from django.contrib import admin
+from ecomapp.models import Category, Product
+# Register your models here.
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name','slug']
+    prepopulated_fields = {'slug':('name',)}
+admin.site.register(Category,CategoryAdmin)
+class ProductadAdmin(admin.ModelAdmin):
+    list_display = ['name','price','available','stock','updated']
+    prepopulated_fields = {'slug':('name',)}
+    list_editable = ['price','stock','available']
+    list_per_page = 20
+admin.site.register(Product,ProductadAdmin)

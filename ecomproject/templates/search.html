@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    Raaj tech-search engine is here
+{% endblock %}
+{% block title %}
+    Raaj-Search
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center mys" style="color:white;">Your search results:<b>"{{query}}"</b></p>
+</div>
+<div class="container" >
+    <div class="row mx_auto">
+        {% for  product in product %}
+        <div class="mybtm marg col-9 col-sm-12 col-md-4 col-lg-4 " >
+            <div class="card text-center" style="min-width:17rem;background: linear-gradient(90deg, rgba(124,0,255,1) 0%,rgba(166,55,146,1) 22%, rgba(32,45,142,1) 49%, rgba(51,104,177,1) 81%,rgba(46,189,203,1) 100%);backdrop-filter:blur(10px);">
+                <a href="{{product.get_url}}"><img class="card-img-top my img" src="{{product.image.url}}" alt="{{product.name}}"></a>
+            <div class="card-body">
+               <h4 class="text-center" style="color:white;">{{product.name}}</h4>
+                <p class="text-justify" style="color:white;">Rs.{{product.price}}</p>
+            </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row mx-auto">
+            <p style="color:white;" class="text-center mys">0 results found</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
